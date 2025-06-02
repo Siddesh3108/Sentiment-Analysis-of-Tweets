@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+    <form method="POST" action="/">
+        <textarea name="comment" rows="5" cols="50" placeholder="Enter your comment here..."></textarea><br>
+        <label for="model">Select Model:</label>
+        <select name="model">
+            <option value="naive_bayes">Naive Bayes</option>
+            <option value="random_forest">Random Forest</option>
+        </select><br>
+        <input type="submit" value="Analyze">
+    </form>
+
+    {% if prediction %}
+        <h2>Predicted Sentiment: <strong>{{ prediction }}</strong></h2>
+        {% if true_label %}
+            <h3>True Label: <strong>{{ true_label }}</strong></h3>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
